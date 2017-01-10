@@ -35,22 +35,23 @@
                                 "age": 0
                             }
                         ]
-                    },
-                    dataType: "json"
-                })
-                .done(function (data, status, jqXHR) {
-                    console.log("TextStatus : " + textStatus + " - Data : " + data);
-                    $("#status").html("TextStatus : " + textStatus + " - Data : " + data);
-                })
-                .fail(function (jqXHR, textStatus, errorThrown) {
-                    console.log("Error thrown : " + textStatus);
-                    $("#status").html("Error thrown : " + textStatus);
+                    }
+                },
+                dataType: "json"
+            })
+            .done(function (data, status, jqXHR) {
+                console.log("TextStatus : " + textStatus + " - Data : " + data);
+                $("#status").html("TextStatus : " + textStatus + " - Data : " + data);
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                console.log("Error thrown : " + textStatus);
+                $("#status").html("Error thrown : " + textStatus);
 
-                })
-                .always(function (jqXHR, textStatus) {
-                    console.log("Fin de l'exécution");
-                    $("#always").html("Fin de l'execution");
-                });
+            })
+            .always(function (jqXHR, textStatus) {
+                console.log("Fin de l'exécution");
+                $("#always").html("Fin de l'execution");
+            });
 
         });
     </script>
