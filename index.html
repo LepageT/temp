@@ -19,40 +19,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-
             $.ajax({
                     type: "POST",
                     url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAi8UPpgmKC_CIBb0fK0REnQ7dqxCTNsOw",
-                    data: {
-                        "considerIp": "false",
-                        "wifiAccessPoints": [
-                            {
-                                "macAddress": "00:00:00:00:00:00",
-                                "age": 0
-                            },
-                            {
-                                "macAddress": "00:00:00:00:00:00",
-                                "age": 0
-                            }
-                        ]
-                    },
-                    dataType: "json"
-                }
-            })
-            .done(function (data, status, jqXHR) {
-                console.log("TextStatus : " + textStatus + " - Data : " + data);
-                $("#status").html("TextStatus : " + textStatus + " - Data : " + data);
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-                console.log("Error thrown : " + textStatus);
-                $("#status").html("Error thrown : " + textStatus);
+                    data: '{"considerIp": "false","wifiAccessPoints": [{"macAddress": "00:25:9c:cf:1c:ac","signalStrength": -43,"signalToNoiseRatio": 0},{"macAddress": "00:25:9c:cf:1c:ad","signalStrength": -55,"signalToNoiseRatio": 0}]}',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                })
+                .done(function (data, textStatus, jqXHR) {
+                    console.log("TextStatus : " + textStatus + " - Data : " + data);
+                console.log(data);
+                    $("#status").html("TextStatus : " + textStatus + " - Data : " + data);
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    console.log("Error thrown : " + textStatus);
+                    $("#status").html("Error thrown : " + textStatus);
+                    console.log(errorThrown);
 
-            })
-            .always(function (jqXHR, textStatus) {
-                console.log("Fin de l'exécution");
-                $("#always").html("Fin de l'execution");
-            });
-
+                })
+                .always(function (jqXHR, textStatus) {
+                    console.log("Fin de l'exécution");
+                    $("#always").html("Fin de l'execution");
+                });
         });
     </script>
 
