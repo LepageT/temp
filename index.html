@@ -14,7 +14,8 @@
 
 <body>
     Content of the document......
-    
+    <h3 id="status"></h3>
+    <h3 id="always"></h3>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -22,17 +23,33 @@
             $.ajax({
                     type: "POST",
                     url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAi8UPpgmKC_CIBb0fK0REnQ7dqxCTNsOw",
-                    data: data,
+                    data: {
+                        "considerIp": "false",
+                        "wifiAccessPoints": [
+                            {
+                                "macAddress": "00:00:00:00:00:00",
+                                "age": 0
+                            },
+                            {
+                                "macAddress": "00:00:00:00:00:00",
+                                "age": 0
+                            }
+                        ]
+                    },
                     dataType: dataType
                 })
                 .done(function (data, status, jqXHR) {
                     console.log("TextStatus : " + textStatus + " - Data : " + data);
+                    $("#status").html("TextStatus : " + textStatus + " - Data : " + data);
                 })
                 .fail(function (jqXHR, textStatus, errorThrown) {
                     console.log("Error thrown : " + textStatus);
+                    $("#status").html("Error thrown : " + textStatus);
+
                 })
                 .always(function (jqXHR, textStatus) {
                     console.log("Fin de l'exécution");
+                    $("#always").html("Fin de l'execution");
                 });
 
         });
