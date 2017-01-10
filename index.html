@@ -40,7 +40,7 @@
                 navigator.geolocation.clearWatch(id);
             }
             console.log(pos);
-            document.getElementById("location").innerHTML = pos.coords.latitude + " " + pos.coords.longitude;
+            document.getElementById("location").innerHTML = pos.coords.accuracy;
             
             var marker = new google.maps.Marker({
               position: {lat: pos.coords.latitude, lng: pos.coords.longitude},
